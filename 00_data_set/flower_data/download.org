@@ -1,0 +1,2 @@
+1. 下载路径：http://download.tensorflow.org/example_images/flower_photos.tgz
+2. 下载后解压到当前目录下即可
