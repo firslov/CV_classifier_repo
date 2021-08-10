@@ -3,65 +3,53 @@
   
   目前包含网络：
 
-  | 序号 | 网络名             |
-  |    1 | LeNet              |
-  |    2 | AlexNet            |
-  |    3 | Vgg11              |
-  |    4 | Vgg13              |
-  |    5 | Vgg16              |
-  |    6 | Vgg16              |
-  |    7 | GoogLeNet          |
-  |    8 | ResNet18           |
-  |    9 | ResNet34           |
-  |   10 | ResNet50           |
-  |   11 | ResNet101          |
-  |   12 | ResNext50_32x4d    |
-  |   13 | ResNext101_32x8d   |
-  |   14 | MobileNetV2        |
-  |   15 | mobilenet_v3_small |
-  |   16 | mobilenet_v3_large |
-  |   17 | shufflenet_v2_x0_5 |
-  |   18 | shufflenet_v2_x1_0 |
+  | 序号 | 网络名  | 序号 | 网络名          | 序号 | 网络名             |
+  |    1 | LeNet   |    7 | GoogLeNet       |   13 | ResNext101_32x8d   |
+  |    2 | AlexNet |    8 | ResNet18        |   14 | MobileNetV2        |
+  |    3 | Vgg11   |    9 | ResNet34        |   15 | mobilenet_v3_small |
+  |    4 | Vgg13   |   10 | ResNet50        |   16 | mobilenet_v3_large |
+  |    5 | Vgg16   |   11 | ResNet101       |   17 | shufflenet_v2_x0_5 |
+  |    6 | Vgg16   |   12 | ResNext50_32x4d |   18 | shufflenet_v2_x1_0 |
 
 * 使用
-  1. 安装
-  #+BEGIN_SRC shell
-    git clone --depth=1 https://github.com/firslov/CV_classifier_repo.git
-  #+END_SRC
+** 安装
+   #+BEGIN_SRC shell
+     git clone --depth=1 https://github.com/firslov/CV_classifier_repo.git
+   #+END_SRC
   
-  2. 下载数据集
+** 下载数据集
      
-     见数据集内说明：
+   见数据集内说明：
      
-     （1）[[file:../00_data_set/flower_data/note.org][花分类数据集]]
+   （1）[[file:../00_data_set/flower_data/note.org][花分类数据集]]
      
-  3. 训练
-  #+BEGIN_SRC shell
-    python3 train.py arg1 arg2 arg3 ...
-    # for example
-    python3 train.py --model "Vgg16" --pre "self" --epochs 10
-  #+END_SRC
-     参数说明：
+** 训练
+   #+BEGIN_SRC shell
+     python3 train.py arg1 arg2 arg3 ...
+     # for example
+     python3 train.py --model "Vgg16" --pre "self" --epochs 10
+   #+END_SRC
+   参数说明：
      
-     | 参数         |                                     默认值 | 说明                                                         |
-     | --model      |                                  'AlexNet' | 模型种类，使用简介中模型名称                                 |
-     | --dataDir    | "../00_data_set/flower_data/flower_photos" | 数据集路径                                                   |
-     | --pre        |                                         '' | 预训练参数路径，默认不进行预训练，取值'self'时使用自训练权重 |
-     | --numcls     |                                          5 | 类别数量                                                     |
-     | --batchSize  |                                          8 | -                                                            |
-     | --epochs     |                                          1 | -                                                            |
-     | --numWorkers |                                          4 | -                                                            |
+   | 参数         |                                     默认值 | 说明                                                         |
+   | --model      |                                  'AlexNet' | 模型种类，使用简介中模型名称                                 |
+   | --dataDir    | "../00_data_set/flower_data/flower_photos" | 数据集路径                                                   |
+   | --pre        |                                         '' | 预训练参数路径，默认不进行预训练，取值'self'时使用自训练权重 |
+   | --numcls     |                                          5 | 类别数量                                                     |
+   | --batchSize  |                                          8 | -                                                            |
+   | --epochs     |                                          1 | -                                                            |
+   | --numWorkers |                                          4 | -                                                            |
        
-  4. 预测
-  #+BEGIN_SRC shell
-    python3 predict.py arg1 arg2 arg3 ...
-    # for example
-    python3 predict.py --pics 3.jpeg
-  #+END_SRC
-     参数说明：
+** 预测
+   #+BEGIN_SRC shell
+     python3 predict.py arg1 arg2 arg3 ...
+     # for example
+     python3 predict.py --pics 3.jpeg
+   #+END_SRC
+   参数说明：
 
-     | 参数     | 默认值    | 说明                         |
-     | --model  | 'AlexNet' | 模型种类，使用简介中模型名称 |
-     | --pics   | '1.jpeg'  | 预测图片，默认根路径./pics/  |
-     | --numcls | 5         | 类别数量                     |
+   | 参数     | 默认值    | 说明                         |
+   | --model  | 'AlexNet' | 模型种类，使用简介中模型名称 |
+   | --pics   | '1.jpeg'  | 预测图片，默认根路径./pics/  |
+   | --numcls | 5         | 类别数量                     |
 
