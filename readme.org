@@ -31,14 +31,14 @@
    #+END_SRC
    参数说明：
      
-   | 参数         |                                     默认值 | 说明                                                         |
-   | --model      |                                  'AlexNet' | 模型种类，使用简介中模型名称                                 |
-   | --dataDir    | "../00_data_set/flower_data/flower_photos" | 数据集路径                                                   |
-   | --pre        |                                         '' | 预训练参数路径，默认不进行预训练，取值'self'时使用自训练权重 |
-   | --numcls     |                                          5 | 类别数量                                                     |
-   | --batchSize  |                                          8 | -                                                            |
-   | --epochs     |                                          1 | -                                                            |
-   | --numWorkers |                                          4 | -                                                            |
+   | 参数       |                                     默认值 | 说明                                                         |
+   | model      |                                  "AlexNet" | 模型种类，使用简介中模型名称                                 |
+   | dataDir    | "../00_data_set/flower_data/flower_photos" | 数据集路径                                                   |
+   | pre        |                                         '' | 预训练参数路径，默认不进行预训练，取值'self'时使用自训练权重 |
+   | numcls     |                                          5 | 类别数量                                                     |
+   | batchSize  |                                          8 | -                                                            |
+   | epochs     |                                          1 | -                                                            |
+   | numWorkers |                                          4 | -                                                            |
        
 ** 预测
    #+BEGIN_SRC shell
@@ -48,8 +48,8 @@
    #+END_SRC
    参数说明：
 
-   | 参数     | 默认值    | 说明                         |
-   | --model  | 'AlexNet' | 模型种类，使用简介中模型名称 |
-   | --pics   | '1.jpeg'  | 预测图片，默认根路径./pics/  |
-   | --numcls | 5         | 类别数量                     |
+   | 参数   | 默认值    | 说明                         |
+   | model  | "AlexNet" | 模型种类，使用简介中模型名称 |
+   | pics   | "1.jpeg"  | 预测图片，默认根路径./pics/  |
+   | numcls | 5         | 类别数量                     |
 
