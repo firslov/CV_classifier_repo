@@ -1,0 +1,37 @@
+* 简介
+  本仓库包含多种cv分类模型的pytorch实现及若干实用工具，配置了统一的train及predict接口。
+  目前包含网络：LeNet、AlexNet、Vgg11、Vgg13、Vgg16、Vgg19、GoogLeNet、ResNet18、ResNet34、ResNet50、ResNet101、ResNext50_32x4d、ResNext101_32x8d、MobileNetV2、mobilenet_v3_small、mobilenet_v3_large、shufflenet_v2_x0_5、shufflenet_v2_x1_0...
+* 使用
+  1. 安装
+  #+BEGIN_SRC shell
+    git clone --depth=1 https://github.com/firslov/CV_classifier_repo.git
+  #+END_SRC
+  2. 下载数据集
+     见数据集内说明：
+     （1）[[file:../00_data_set/flower_data/note.org][花分类数据集]]
+  3. 训练
+  #+BEGIN_SRC shell
+    python3 train.py arg1 arg2 arg3 ...
+    # for example
+    python3 train.py --model "Vgg16" --pre "self" --epochs 10
+  #+END_SRC
+  参数说明：
+  + --model  模型种类，使用简介中模型名称 default='AlexNet'
+  + --dataDir  数据集路径 default="../00_data_set/flower_data/flower_photos"
+  + --pre  预训练参数路径，dafault=''，即不进行预训练，取值'self'时使用自训练权重
+  + --numcls  类别数量 default=5
+  + --lr  default=1e-4
+  + --batchSize  default=8
+  + --epochs  defalut=1
+  + --numWorkers  default=4
+  4. 预测
+  #+BEGIN_SRC shell
+    python3 predict.py arg1 arg2 arg3 ...
+    # for example
+    python3 predict.py --pics 3.jpeg
+  #+END_SRC
+  参数说明：
+  + --model  模型种类，使用简介中模型名称 default='AlexNet'
+  + --pics  预测图片，默认根路径./pics/ default='1.jpeg'
+  + --numcls  类别数量 default=5
+

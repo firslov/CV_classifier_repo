@@ -24,7 +24,7 @@ def main(args):
         os.mkdir('./weights')
 
     pre_weights = './weights/' + args.model + \
-        '.pth' if args.pre == "default" else args.pre
+        '.pth' if args.pre == "self" else args.pre
 
     if args.pre:
         net.load_state_dict(torch.load(pre_weights))
