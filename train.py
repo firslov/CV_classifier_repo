@@ -11,7 +11,7 @@ import time
 def main(args):
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     train_loader, val_loader, train_num, val_num = dataproc.dtcustom.custom_dtset(
-        args.root, args.bs, args.picsize, args.nw, args.model)
+        args)
 
     net = eval(args.model)(num_classes=args.numcls)
     # pre_dict = {k: v for k, v in pre_weights.items() if "classifier" not in k}

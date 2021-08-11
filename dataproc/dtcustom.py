@@ -10,7 +10,9 @@ from dataproc.dtutils import read_split_data, plot_data_loader_image
 # http://download.tensorflow.org/example_images/flower_photos.tgz
 
 
-def custom_dtset(root="../data_set/flower_data/flower_photos", batch_size=8, pic_size=224, nw=0, model=None):
+def custom_dtset(args):
+    root, batch_size, pic_size, num_worker, model = args.root, args.bs, args.picsize, args.nw, args.model
+
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print("using {} device.".format(device))
 
@@ -55,18 +57,18 @@ def custom_dtset(root="../data_set/flower_data/flower_photos", batch_size=8, pic
 
     # nw = nw if nw else min(
     #     [os.cpu_count(), batch_size if batch_size > 1 else 0, 8])
-    print('Using {} dataloader workers'.format(nw))
+    print('Using {} dataloader workers'.format(num_worker))
 
     train_loader = torch.utils.data.DataLoader(train_data_set,
                                                batch_size=batch_size,
                                                shuffle=True,
-                                               num_workers=nw,
+                                               num_workers=num_worker,
                                                collate_fn=train_data_set.collate_fn)
 
     val_loader = torch.utils.data.DataLoader(val_data_set,
                                              batch_size=batch_size,
                                              shuffle=True,
-                                             num_workers=nw)
+                                             num_workers=num_worker)
 
     # plot_data_loader_image(train_loader)
 
