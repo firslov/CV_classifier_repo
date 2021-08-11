@@ -3,13 +3,13 @@ import os
 import torch
 from torchvision import transforms
 
-from _custom.dtset import MyDataSet
-from _custom.dtutils import read_split_data, plot_data_loader_image
+from dataproc.dtset import MyDataSet
+from dataproc.dtutils import read_split_data, plot_data_loader_image
 
 # http://download.tensorflow.org/example_images/flower_photos.tgz
 
 
-def custom_dtset(root="../00_data_set/flower_data/flower_photos", bs=8, nw=0):
+def custom_dtset(root="../data_set/flower_data/flower_photos", bs=8, nw=0):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     print("using {} device.".format(device))
 
@@ -38,10 +38,10 @@ def custom_dtset(root="../00_data_set/flower_data/flower_photos", bs=8, nw=0):
 
     batch_size = bs
 
-    nw = nw if nw else min(
-        [os.cpu_count(), batch_size if batch_size > 1 else 0, 8])
+    # nw = nw if nw else min(
+    #     [os.cpu_count(), batch_size if batch_size > 1 else 0, 8])
     print('Using {} dataloader workers'.format(nw))
-    
+
     train_loader = torch.utils.data.DataLoader(train_data_set,
                                                batch_size=batch_size,
                                                shuffle=True,

@@ -16,10 +16,10 @@ def main(args):
         transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
     ])
 
-    if not os.path.isdir('./pics'):
-        os.mkdir('./pics')
+    if not os.path.isdir('./test_pics'):
+        os.mkdir('./test_pics')
 
-    pic_path = "./pics/" + args.pics
+    pic_path = "./test_pics/" + args.pics
     img = Image.open(pic_path)
     plt.imshow(img)
     img = data_transform(img)

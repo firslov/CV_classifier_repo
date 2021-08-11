@@ -1,20 +1,16 @@
 from argparse import ArgumentParser
-from torchvision import transforms, datasets
 import torch.optim as optim
 import torch.nn as nn
 import torch
-import matplotlib.pyplot as plt
 from model_repo import *
-import _custom
-import numpy as np
+import dataproc
 import os
-import json
 import time
 
 
 def main(args):
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    train_loader, val_loader, train_num, val_num = _custom.dtcustom.custom_dtset(
+    train_loader, val_loader, train_num, val_num = dataproc.dtcustom.custom_dtset(
         args.root, args.bs, args.nw)
 
     net = eval(args.model)(num_classes=args.numcls)
@@ -89,11 +85,11 @@ if __name__ == '__main__':
     parser.add_argument('--batchSize', dest='bs', default=8, type=int)
     parser.add_argument('--epochs', default=1, type=int)
     parser.add_argument('--pre', default='', type=str)
-    parser.add_argument('--numWorkers', dest='nw', default=4, type=int)
+    parser.add_argument('--numWorkers', dest='nw', default=0, type=int)
 
     # dataset
     parser.add_argument('--dataDir', dest='root',
-                        default="../00_data_set/flower_data/flower_photos", type=str)
+                        default="./dataset/flower_data/flower_photos", type=str)
     parser.add_argument('--numcls', default=5, type=int)
 
     main(parser.parse_args())

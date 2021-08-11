@@ -11,18 +11,33 @@
   |    5 | Vgg16   |   11 | ResNet101       |   17 | shufflenet_v2_x0_5 |
   |    6 | Vgg16   |   12 | ResNext50_32x4d |   18 | shufflenet_v2_x1_0 |
 
+** 文件结构
+   - dataset 数据集
+     - flower_data 花分类数据集
+       - rose
+       - tulip
+       - ...
+     - trafic_data 交通标志物数据集
+     - ...
+   - dataproc 数据集划分脚本
+   - model_repo 模型仓库
+   - test_pics 测试图片
+   - weights 模型权重
+   - train.py 训练脚本
+   - predict.py 预测脚本
+     
 * 使用
 ** 安装
    #+BEGIN_SRC shell
      git clone --depth=1 https://github.com/firslov/CV_classifier_repo.git
    #+END_SRC
   
-** 下载数据集
+** 数据集
      
-   见数据集内说明：
+   数据集放置到dataproc文件夹下，每一类别创建一个子文件夹，名称为类别名，下载地址见数据集内说明：
      
-   （1）[[file:../00_data_set/flower_data/note.org][花分类数据集]]
-     
+   1. [[file:../00_data_set/flower_data/note.org][花分类数据集]]
+   
 ** 训练
    #+BEGIN_SRC shell
      python3 train.py arg1 arg2 arg3 ...
@@ -33,7 +48,7 @@
      
    | 参数       |                                     默认值 | 说明                                                         |
    | model      |                                  "AlexNet" | 模型种类，使用简介中模型名称                                 |
-   | dataDir    | "../00_data_set/flower_data/flower_photos" | 数据集路径                                                   |
+   | dataDir    | "./dataset/flower_data/flower_photos" | 数据集路径                                                   |
    | pre        |                                         '' | 预训练参数路径，默认不进行预训练，取值'self'时使用自训练权重 |
    | numcls     |                                          5 | 类别数量                                                     |
    | batchSize  |                                          8 | -                                                            |
