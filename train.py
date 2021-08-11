@@ -11,7 +11,7 @@ import time
 def main(args):
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     train_loader, val_loader, train_num, val_num = dataproc.dtcustom.custom_dtset(
-        args.root, args.bs, args.nw)
+        args.root, args.bs, args.picsize, args.nw, args.model)
 
     net = eval(args.model)(num_classes=args.numcls)
     # pre_dict = {k: v for k, v in pre_weights.items() if "classifier" not in k}
@@ -86,6 +86,7 @@ if __name__ == '__main__':
     parser.add_argument('--epochs', default=1, type=int)
     parser.add_argument('--pre', default='', type=str)
     parser.add_argument('--numWorkers', dest='nw', default=0, type=int)
+    parser.add_argument('--picsize', default=224, type=int)
 
     # dataset
     parser.add_argument('--dataDir', dest='root',
