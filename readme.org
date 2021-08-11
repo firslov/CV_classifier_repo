@@ -17,9 +17,9 @@
 
    备注：
    - 网络名区分大小写
-   - GoogLeNet预测过程中实例化网络时，aux_logits设置为False以降低运算量，统一接口已实现
+   - GoogLeNet预测过程中实例化网络时，aux_logits设置为False以降低运算量，[[https://github.com/firslov/CV_classifier_repo/blob/master/predict.py#L48-L51][查看]]
    - efficientnetv1、efficientnetv2原论文中激活函数均为SiLU，只有pytorch1.7版本以上存在nn.SiLU，本仓库使用ReLU替代
-   - efficientnetv1、efficientnetv2采用特殊的图片预处理参数，见./dtproc/dtcustom.py line17-25
+   - efficientnetv1、efficientnetv2采用特殊的图片预处理参数，[[https://github.com/firslov/CV_classifier_repo/blob/master/dataproc/dtcustom.py#L25-L34][查看]]
 
 ** 文件结构
    - dataset 数据集
