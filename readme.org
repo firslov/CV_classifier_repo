@@ -1,15 +1,25 @@
 * 简介
   本仓库包含多种cv分类模型的pytorch实现及若干实用工具，配置了统一的train及predict接口。
-  
-  目前包含网络：
 
-  | 序号 | 网络名  | 序号 | 网络名          | 序号 | 网络名             |
-  |    1 | LeNet   |    7 | GoogLeNet       |   13 | ResNext101_32x8d   |
-  |    2 | AlexNet |    8 | ResNet18        |   14 | MobileNetV2        |
-  |    3 | Vgg11   |    9 | ResNet34        |   15 | mobilenet_v3_small |
-  |    4 | Vgg13   |   10 | ResNet50        |   16 | mobilenet_v3_large |
-  |    5 | Vgg16   |   11 | ResNet101       |   17 | shufflenet_v2_x0_5 |
-  |    6 | Vgg16   |   12 | ResNext50_32x4d |   18 | shufflenet_v2_x1_0 |
+** 网络列表：
+
+   | 序号 | 网络名    | 序号 | 网络名             | 序号 | 网络名           |
+   |    1 | LeNet     |   11 | ResNet101          |   21 | efficientnet_b2  |
+   |    2 | AlexNet   |   12 | ResNext50_32x4d    |   22 | efficientnet_b3  |
+   |    3 | Vgg11     |   13 | ResNext101_32x8d   |   23 | efficientnet_b4  |
+   |    4 | Vgg13     |   14 | MobileNetV2        |   24 | efficientnet_b5  |
+   |    5 | Vgg16     |   15 | mobilenet_v3_small |   25 | efficientnet_b6  |
+   |    6 | Vgg16     |   16 | mobilenet_v3_large |   26 | efficientnet_b7  |
+   |    7 | GoogLeNet |   17 | shufflenet_v2_x0_5 |   27 | efficientnetv2_s |
+   |    8 | ResNet18  |   18 | shufflenet_v2_x1_0 |   28 | efficientnetv2_m |
+   |    9 | ResNet34  |   19 | efficientnet_b0    |   29 | efficientnetv2_l |
+   |   10 | ResNet50  |   20 | efficientnet_b1    |      |                  |
+
+   备注：
+   - 网络名区分大小写
+   - GoogLeNet预测过程中实例化网络时，aux_logits设置为False以降低运算量，统一接口已实现
+   - efficientnetv1、efficientnetv2原论文中激活函数均为SiLU，只有pytorch1.7版本以上存在nn.SiLU，本仓库使用ReLU替代
+   - efficientnetv1、efficientnetv2采用特殊的图片预处理参数，见./dtproc/dtcustom.py line17-25
 
 ** 文件结构
    - dataset 数据集
@@ -46,14 +56,15 @@
    #+END_SRC
    参数说明：
      
-   | 参数       |                                     默认值 | 说明                                                         |
-   | model      |                                  "AlexNet" | 模型种类，使用简介中模型名称                                 |
+   | 参数       |                                默认值 | 说明                                                         |
+   | model      |                             "AlexNet" | 模型种类，使用简介中模型名称                                 |
    | dataDir    | "./dataset/flower_data/flower_photos" | 数据集路径                                                   |
-   | pre        |                                         '' | 预训练参数路径，默认不进行预训练，取值'self'时使用自训练权重 |
-   | numcls     |                                          5 | 类别数量                                                     |
-   | batchSize  |                                          8 | -                                                            |
-   | epochs     |                                          1 | -                                                            |
-   | numWorkers |                                          4 | -                                                            |
+   | pre        |                                    '' | 预训练参数路径，默认不进行预训练，取值'self'时使用自训练权重 |
+   | numcls     |                                     5 | 类别数量                                                     |
+   | batchSize  |                                     8 | -                                                            |
+   | epochs     |                                     1 | -                                                            |
+   | numWorkers |                                     4 | -                                                            |
+   | picsize    |                                   224 | 规范化图片尺寸，EfficientNet需要适配                         |
        
 ** 预测
    #+BEGIN_SRC shell
@@ -63,8 +74,9 @@
    #+END_SRC
    参数说明：
 
-   | 参数   | 默认值    | 说明                         |
-   | model  | "AlexNet" | 模型种类，使用简介中模型名称 |
-   | pics   | "1.jpeg"  | 预测图片，默认根路径./pics/  |
-   | numcls | 5         | 类别数量                     |
+   | 参数    | 默认值    | 说明                                 |
+   | model   | "AlexNet" | 模型种类，使用简介中模型名称         |
+   | pics    | "1.jpeg"  | 预测图片，默认根路径./pics/          |
+   | numcls  | 5         | 类别数量                             |
+   | picsize | 224       | 规范化图片尺寸，EfficientNet需要适配 |
 
