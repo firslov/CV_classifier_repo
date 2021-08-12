@@ -9,7 +9,7 @@
    |    3 | Vgg11     |   13 | ResNext101_32x8d   |   23 | efficientnet_b4  |
    |    4 | Vgg13     |   14 | MobileNetV2        |   24 | efficientnet_b5  |
    |    5 | Vgg16     |   15 | mobilenet_v3_small |   25 | efficientnet_b6  |
-   |    6 | Vgg16     |   16 | mobilenet_v3_large |   26 | efficientnet_b7  |
+   |    6 | Vgg19     |   16 | mobilenet_v3_large |   26 | efficientnet_b7  |
    |    7 | GoogLeNet |   17 | shufflenet_v2_x0_5 |   27 | efficientnetv2_s |
    |    8 | ResNet18  |   18 | shufflenet_v2_x1_0 |   28 | efficientnetv2_m |
    |    9 | ResNet34  |   19 | efficientnet_b0    |   29 | efficientnetv2_l |
